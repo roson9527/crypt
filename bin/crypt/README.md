@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-go install github.com/bketelsen/crypt/bin/crypt@latest
+go install github.com/roson9527/crypt/bin/crypt@latest
 ```
 
 ## Backends

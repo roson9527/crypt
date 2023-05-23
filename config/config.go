@@ -5,11 +5,11 @@ import (
 	"io"
 	"io/ioutil"
 
-	"github.com/bketelsen/crypt/backend"
-	"github.com/bketelsen/crypt/backend/consul"
-	"github.com/bketelsen/crypt/backend/etcd"
-	"github.com/bketelsen/crypt/backend/firestore"
-	"github.com/bketelsen/crypt/encoding/secconf"
+	"github.com/roson9527/crypt/backend"
+	"github.com/roson9527/crypt/backend/consul"
+	"github.com/roson9527/crypt/backend/etcd"
+	"github.com/roson9527/crypt/backend/firestore"
+	"github.com/roson9527/crypt/encoding/secconf"
 )
 
 type KVPair struct {
@@ -67,8 +67,8 @@ func NewStandardEtcdConfigManager(machines []string) (ConfigManager, error) {
 }
 
 // NewStandardConsulConfigManager returns a new ConfigManager backed by consul.
-func NewStandardConsulConfigManager(machines []string) (ConfigManager, error) {
-	store, err := consul.New(machines)
+func NewStandardConsulConfigManager(machines []string, acl ...string) (ConfigManager, error) {
+	store, err := consul.New(machines, acl...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,8 +97,8 @@ func NewEtcdConfigManager(machines []string, keystore io.Reader) (ConfigManager,
 
 // NewConsulConfigManager returns a new ConfigManager backed by consul.
 // Data will be encrypted.
-func NewConsulConfigManager(machines []string, keystore io.Reader) (ConfigManager, error) {
-	store, err := consul.New(machines)
+func NewConsulConfigManager(machines []string, keystore io.Reader, acl ...string) (ConfigManager, error) {
+	store, err := consul.New(machines, acl...)
 	if err != nil {
 		return nil, err
 	}

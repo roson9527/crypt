@@ -41,7 +41,7 @@ install:
 	go install ./bin/crypt
 
 deps:
-	go get -u github.com/bketelsen/crypt/bin/crypt
+	go get -u github.com/roson9527/crypt/bin/crypt
 	go mod tidy
 	go mod verify
 .PHONY: deps
